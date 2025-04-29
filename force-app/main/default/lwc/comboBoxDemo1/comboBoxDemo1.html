@@ -1,0 +1,84 @@
+<template>
+    <br/>
+    <lightning-avatar src="https://www.lightningdesignsystem.com/assets/images/avatar2.jpg"></lightning-avatar>
+<br/>
+           <p class="slds-p-horizontal_small">
+           Light DOM Demo  component- {renderedPage}test
+        </p>
+ 
+     <h1 style="background-color:white">  Combo box Test 1</h1>
+
+        <br />
+        <input type="text" value={myValue} onkeypress={handleChange} />
+   
+ 
+
+    <div class="slds-p-around_none slds-m-top_x-small slds-m-bottom_medium slds-m-horizontal_none">
+        <lightning-layout multiple-rows="true" >
+            <lightning-layout-item padding ="around-small" size="12" small-device-size="12" medium-device-size="6" large-device-size="4">
+                <div>
+                    <!-- Category Picklist Item-->
+                    <lightning-combobox data-id='category' label={categoryLabel} value={selectedCategory}  dropdown-alignment="auto"
+                    options={statusOptions}  ></lightning-combobox>
+                        <div class="slds-assistive-text" data-id="categotyAnnounce" aria-live="assertive"></div>
+                    </div>
+            </lightning-layout-item>
+            <template if:true={isSubCategoryReq}>
+                <lightning-layout-item padding="around-small" size="12" small-device-size="12" medium-device-size="6" large-device-size="4">
+                    <div>
+                        <!-- Sub-Category Picklist Item-->                
+                        <lightning-combobox data-id='subcategory' label={subCategoryLabel}  value={selectedSubCategory} required dropdown-alignment="auto"
+                        options={optionsSubCategory} onchange={handleSubCategoryChange} disabled={disableSubCategory}></lightning-combobox>
+                        <div class="slds-assistive-text" data-id="subcategotyAnnounce" aria-live="assertive"></div>                
+                    </div>
+                </lightning-layout-item>
+            </template>
+            <lightning-layout-item padding="around-small" size="12" small-device-size="12" medium-device-size="6" large-device-size="4">
+                <div>
+                    <!-- Industry Picklist Item-->
+                    <lightning-combobox data-id='industry' label={industryLabel} value={selectedIndustry} required dropdown-alignment="auto"
+                    options={optionsIndustry} onchange={handleIndustryChange} disabled={isSubCategorySelected}></lightning-combobox>
+                    <div class="slds-assistive-text" data-id="industryAnnounce" aria-live="assertive"></div>
+                </div>
+            </lightning-layout-item>
+            <lightning-layout-item padding="around-small" size="12" small-device-size="12" medium-device-size="6" large-device-size="4">
+                <div>
+                    <!-- SIC Code Item-->
+                    <lightning-input type="text" label={codeSICLabel} value={sicCodeVal} disabled></lightning-input>
+                    <div class="slds-assistive-text" data-id="sicAnnounce" aria-live="assertive"></div>
+                </div>
+            </lightning-layout-item>
+        </lightning-layout>
+    </div>
+
+    <div class="slds-grid slds-wrap slds-p-top_small">
+        <div class="slds-size_1-of-3">
+            <!-- Category Picklist Item-->
+            <lightning-combobox data-id='category' label='Status' value='' required dropdown-alignment="auto"
+            options={statusOptions} onchange={handleCategoryChange}></lightning-combobox>
+                <div class="slds-assistive-text" data-id="categotyAnnounce" aria-live="assertive"></div>
+        </div>
+        <template if:true={isSubCategoryReq}>
+            <div class="slds-size_1-of-3 slds-p-left_small">
+                    <!-- Sub-Category Picklist Item-->                
+                    <lightning-combobox data-id='subcategory' label={subCategoryLabel}  value={selectedSubCategory} required dropdown-alignment="auto"
+                    options={optionsSubCategory} onchange={handleSubCategoryChange} disabled={disableSubCategory}></lightning-combobox>
+                    <div class="slds-assistive-text" data-id="subcategotyAnnounce" aria-live="assertive"></div>                
+            </div>
+        </template>
+        <div class="slds-size_1-of-3 slds-p-left_small">
+            <!-- Industry Picklist Item-->
+            <lightning-combobox data-id='industry' label={industryLabel} value={selectedIndustry} required dropdown-alignment="auto"
+            options={optionsIndustry} onchange={handleIndustryChange} disabled={isSubCategorySelected}></lightning-combobox>
+            <div class="slds-assistive-text" data-id="industryAnnounce" aria-live="assertive"></div>
+        </div>
+    </div>
+    <div class="slds-grid slds-wrap">
+        <div class="slds-size_1-of-3">
+            <!-- SIC Code Item-->
+            <lightning-input type="text" label={codeSICLabel} value={sicCodeVal} disabled></lightning-input>
+            <div class="slds-assistive-text" data-id="sicAnnounce" aria-live="assertive"></div>
+        </div>
+    </div>
+
+</template>
