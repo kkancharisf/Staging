@@ -18,7 +18,7 @@ export default class ComboBoxDemo1 extends LightningElement {
         },
     ];
 
-    value = 'new';
+    value = 'new1';
 
     @track myValue = "initial value";
 
